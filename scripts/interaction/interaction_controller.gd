@@ -2,6 +2,7 @@ extends Node
 signal prompt_changed(text: String)
 @export var ray_path: NodePath
 @export var actor_path: NodePath
+var suspended: bool = false
 var target: InteractableComponent
 @onready var ray: RayCast3D = get_node(ray_path)
 @onready var actor: Node = get_node(actor_path)
@@ -14,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 
 func refresh_target() -> void:
 	var next_target: InteractableComponent
-	if GameManager.state == GameManager.State.RUNNING:
+	if GameManager.state == GameManager.State.RUNNING and not suspended:
 		ray.force_raycast_update()
 		var collider := ray.get_collider() as Node
 		# Only the nearest collision object can supply an interaction, so walls occlude it.
@@ -59,5 +60,6 @@ func _on_state_changed(_previous: GameManager.State, _current: GameManager.State
 
 func _exit_tree() -> void:
 	_set_target(null)
+
 
 

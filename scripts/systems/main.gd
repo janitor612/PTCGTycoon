@@ -6,7 +6,9 @@ extends Node3D
 func _ready() -> void:
 	player.global_transform = player_spawn.global_transform
 	$FirstPersonPlayer/InteractionController.prompt_changed.connect($FoundationHUD.set_interaction_prompt)
+	$FirstPersonPlayer/ObjectHandling.hint_changed.connect($FoundationHUD.set_interaction_prompt)
 	GameManager.start_session()
+
 
 
 

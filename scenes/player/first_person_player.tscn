@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/first_person_player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/player/mouse_look.gd" id="2"]
@@ -6,6 +6,7 @@
 
 [ext_resource type="Script" path="res://scripts/interaction/interaction_controller.gd" id="4"]
 
+[ext_resource type="Script" path="res://scripts/objects/object_handling.gd" id="5"]
 [sub_resource type="CapsuleShape3D" id="CapsuleShape"]
 radius = 0.35
 height = 1.8
@@ -39,3 +40,9 @@ pitch_pivot_path = NodePath("../LookPivot")
 script = ExtResource("4")
 ray_path = NodePath("../LookPivot/Camera3D/InteractionRay")
 actor_path = NodePath("..")
+
+[node name="ObjectHandling" type="Node3D" parent="."]
+script = ExtResource("5")
+camera_path = NodePath("../LookPivot/Camera3D")
+actor_path = NodePath("..")
+interaction_controller_path = NodePath("../InteractionController")

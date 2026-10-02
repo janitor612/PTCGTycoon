@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 [ext_resource type="Script" path="res://scripts/systems/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/world/test_environment.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/foundation_hud.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/player/first_person_player.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/interaction/test_switch.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/objects/test_parcel.tscn" id="6"]
 [node name="Main" type="Node3D"]
 process_mode = 3
 script = ExtResource("1")
@@ -19,3 +20,8 @@ switch_name = "Welcome sign"
 [node name="RightTestSwitch" parent="TestEnvironment" instance=ExtResource("5")]
 position = Vector3(1.4, 0.9, 0.8)
 switch_name = "Counter light"
+
+[node name="TestParcelA" parent="TestEnvironment" instance=ExtResource("6")]
+position = Vector3(-2.5, 0.3, 2.2)
+[node name="TestParcelB" parent="TestEnvironment" instance=ExtResource("6")]
+position = Vector3(2.5, 0.3, 2.2)

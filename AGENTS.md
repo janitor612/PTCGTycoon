@@ -1,6 +1,6 @@
 # Project instructions
 
-Read docs/development_roadmap.md and docs/architecture.md before making changes. This is a phased Godot 3D TCG shop tycoon project. Phases 1, 2, and 3 are complete. Phase 4 is not authorized. Cloud environment setup is authorized, but must not advance gameplay development.
+Read docs/development_roadmap.md and docs/architecture.md before making changes. This is a phased Godot 3D TCG shop tycoon project. Phases 1 through 4 are complete. Phase 5 is not authorized. Cloud environment setup is authorized, but must not advance gameplay development.
 
 Implement only the phase explicitly requested by the user. Stop at each phase boundary and report implemented behavior, created files, modified files, controls, exact tests, limitations, and the next phase. Wait for explicit permission before starting the next phase.
 
@@ -16,6 +16,8 @@ Headless checks do not prove visual quality or real input behavior. Report manua
 ## Local delivery requirement
 
 The user's active Godot project is C:/Users/under/OneDrive/Documents/pokemon-tcg-tycoon/. Apply all completed work for this project to that folder, including cloud changes, and validate it locally before reporting delivery. Cloud containers cannot directly access this Windows folder; explicitly hand off completed changes for local synchronization. Preserve unrelated local edits and do not advance phases without authorization.
+
+
 
 
 

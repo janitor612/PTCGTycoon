@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/interaction/interactable_component.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/objects/carryable_component.gd" id="2"]
+[sub_resource type="StandardMaterial3D" id="material"]
+albedo_color = Color(0.9, 0.65, 0.25, 1)
+roughness = 0.8
+[sub_resource type="BoxMesh" id="mesh"]
+size = Vector3(0.6, 0.5, 0.4)
+material = SubResource("material")
+[sub_resource type="BoxShape3D" id="shape"]
+size = Vector3(0.6, 0.5, 0.4)
+[node name="TestParcel" type="RigidBody3D"]
+mass = 0.5
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("mesh")
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("shape")
+[node name="InteractionComponent" type="Node" parent="."]
+script = ExtResource("1")
+display_name = "Test parcel"
+action_label = "Pick up"
+highlight_mesh_path = NodePath("../Mesh")
+[node name="CarryableComponent" type="Node" parent="."]
+script = ExtResource("2")

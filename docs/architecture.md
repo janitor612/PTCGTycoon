@@ -32,3 +32,7 @@ The test exits with failure count and uses only user://foundation_test.json plus
 ## Phase 3 interaction boundaries
 GameManager handles Escape in its always-active _input callback so GUI consumption and pausing cannot disable resume. Main uses an explicit always-process property, while the player is explicitly pausable. InteractableComponent attaches directly beneath a collision object and exposes used and presentation_changed signals. InteractionController resolves only the nearest collider, manages focus and prompts, and invokes use with the actor. TestSwitch owns its state independently. Main wires prompt signals to the HUD. Material overlays are restored after focus leaves. Object handling remains Phase 4.
 
+
+## Phase 4 physical objects
+CarryableComponent links a RigidBody3D, one convex collision shape, one mesh, and an InteractableComponent. The player's composed ObjectHandling node owns the carry state, shape sweeps, placement query, and input. Interaction targeting is suspended while carrying. Bodies remain in their world scene with physics frozen during carrying; release restores physics and collision exceptions. Placement uses an upright yaw rotation, configurable bottom offset, support-normal check, and shape-overlap check including the player. The preview is visual only. No inventory or product database is introduced.
+
