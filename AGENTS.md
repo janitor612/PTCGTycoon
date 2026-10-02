@@ -12,3 +12,9 @@ Validation commands (from the repository root, with Godot installed as godot):
 - godot --headless --path . --quit-after 30
 
 Headless checks do not prove visual quality or real input behavior. Report manual checks separately. Never modify real user saves during tests. Keep .godot caches, exports, credentials, and local saves out of Git.
+
+## Local delivery requirement
+
+The user's active Godot project is C:/Users/under/OneDrive/Documents/pokemon-tcg-tycoon/. Apply all completed work for this project to that folder, including cloud changes, and validate it locally before reporting delivery. Cloud containers cannot directly access this Windows folder; explicitly hand off completed changes for local synchronization. Preserve unrelated local edits and do not advance phases without authorization.
+
+
