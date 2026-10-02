@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://scripts/player/first_person_player.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/player/mouse_look.gd" id="2"]
 [ext_resource type="Script" path="res://scripts/interaction/interaction_ray.gd" id="3"]
+
+[ext_resource type="Script" path="res://scripts/interaction/interaction_controller.gd" id="4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape"]
 radius = 0.35
 height = 1.8
 
 [node name="FirstPersonPlayer" type="CharacterBody3D"]
+process_mode = 1
 script = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -30,3 +33,9 @@ script = ExtResource("3")
 script = ExtResource("2")
 yaw_body_path = NodePath("..")
 pitch_pivot_path = NodePath("../LookPivot")
+
+
+[node name="InteractionController" type="Node" parent="."]
+script = ExtResource("4")
+ray_path = NodePath("../LookPivot/Camera3D/InteractionRay")
+actor_path = NodePath("..")

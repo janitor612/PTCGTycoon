@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		var snapshot := DebugManager.get_snapshot()
 		var position_text: String = str(snapshot.get("player_position", "Unavailable"))
 		var target_text: String = str(snapshot.get("raycast_target", "None"))
-		debug_label.text = "DEBUG • PHASE 2\nFPS: %s\nState: %s\nNodes: %s\nGodot: %s\nPlayer: %s\nRay target: %s" % [snapshot.fps, snapshot.state, snapshot.nodes, snapshot.engine, position_text, target_text]
+		debug_label.text = "DEBUG • PHASE 3\nFPS: %s\nState: %s\nNodes: %s\nGodot: %s\nPlayer: %s\nRay target: %s" % [snapshot.fps, snapshot.state, snapshot.nodes, snapshot.engine, position_text, target_text]
 
 func _on_debug_visibility_changed(is_visible: bool) -> void:
 	debug_panel.visible = is_visible
@@ -28,3 +28,7 @@ func _on_debug_visibility_changed(is_visible: bool) -> void:
 
 func _on_state_changed(_previous: GameManager.State, current: GameManager.State) -> void:
 	pause_label.visible = current == GameManager.State.PAUSED
+
+func set_interaction_prompt(text: String) -> void:
+	$InteractionPrompt.text = text
+	$Crosshair.modulate = Color(0.3, 0.85, 1.0) if not text.is_empty() else Color.WHITE

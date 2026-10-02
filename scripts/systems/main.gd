@@ -5,9 +5,8 @@ extends Node3D
 
 func _ready() -> void:
 	player.global_transform = player_spawn.global_transform
+	$FirstPersonPlayer/InteractionController.prompt_changed.connect($FoundationHUD.set_interaction_prompt)
 	GameManager.start_session()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause"):
-		GameManager.toggle_pause()
-		get_viewport().set_input_as_handled()
+
+

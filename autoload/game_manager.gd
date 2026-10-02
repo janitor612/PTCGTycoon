@@ -23,3 +23,9 @@ func _set_state(next_state: State) -> void:
 	state = next_state
 	get_tree().paused = state == State.PAUSED
 	state_changed.emit(previous, state)
+
+func _input(event: InputEvent) -> void:
+	# Pause must work before GUI handling and while the gameplay tree is paused.
+	if event.is_action_pressed("pause") and not event.is_echo():
+		toggle_pause()
+		get_viewport().set_input_as_handled()

@@ -28,3 +28,7 @@ Open tests/foundation_smoke.tscn and press F6, or run:
 Godot --headless --path <project-directory> res://tests/foundation_smoke.tscn
 
 The test exits with failure count and uses only user://foundation_test.json plus temporary/backup siblings. It removes its test files afterward. Never point it at a real save.
+
+## Phase 3 interaction boundaries
+GameManager handles Escape in its always-active _input callback so GUI consumption and pausing cannot disable resume. Main uses an explicit always-process property, while the player is explicitly pausable. InteractableComponent attaches directly beneath a collision object and exposes used and presentation_changed signals. InteractionController resolves only the nearest collider, manages focus and prompts, and invokes use with the actor. TestSwitch owns its state independently. Main wires prompt signals to the HUD. Material overlays are restored after focus leaves. Object handling remains Phase 4.
+
