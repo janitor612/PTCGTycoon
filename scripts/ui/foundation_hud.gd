@@ -18,7 +18,9 @@ func _process(delta: float) -> void:
 	if refresh_remaining <= 0.0:
 		refresh_remaining = 0.25
 		var snapshot := DebugManager.get_snapshot()
-		debug_label.text = "DEBUG • FOUNDATION\nFPS: %s\nState: %s\nNodes: %s\nGodot: %s" % [snapshot.fps, snapshot.state, snapshot.nodes, snapshot.engine]
+		var position_text: String = str(snapshot.get("player_position", "Unavailable"))
+		var target_text: String = str(snapshot.get("raycast_target", "None"))
+		debug_label.text = "DEBUG • PHASE 2\nFPS: %s\nState: %s\nNodes: %s\nGodot: %s\nPlayer: %s\nRay target: %s" % [snapshot.fps, snapshot.state, snapshot.nodes, snapshot.engine, position_text, target_text]
 
 func _on_debug_visibility_changed(is_visible: bool) -> void:
 	debug_panel.visible = is_visible
