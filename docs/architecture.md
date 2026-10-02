@@ -1,0 +1,28 @@
+# Architecture and conventions
+
+Target: Godot 4.7 project format; validated with the installed 4.7.2 stable engine. Preserve GL Compatibility and Jolt Physics.
+
+Use typed GDScript, tabs, snake_case files/functions/variables, PascalCase node and class names, and UPPER_CASE constants. Prefer small composed scenes and signal-based boundaries. Content belongs in Resources or data files, not player logic. Add systems only in their scheduled phase.
+
+- scenes/main.tscn owns startup and composes the test environment and HUD.
+- GameManager owns BOOTING/RUNNING/PAUSED lifecycle. It always processes so resume remains possible.
+- DebugManager owns diagnostic visibility and snapshots. HUD refreshes visible diagnostics at 4 Hz.
+- SaveManager owns the versioned JSON envelope, explicit save/load APIs, error signals, and backup rotation. It never auto-saves or auto-loads. Empty load results also represent errors; subscribers should use operation_failed to distinguish them.
+- The environment inherits pausable processing. Main and HUD remain active while paused.
+- user://save_v1.json is the default future save location, outside res://. Payload ownership and migration rules will be added when real persistent systems exist. Unknown versions are rejected without rewriting them. A .bak file is retained; automatic recovery and power-loss guarantees are not implemented.
+- Static camera and PlayerSpawn marker are placeholders for Phase 2.
+- assets/environment and assets/materials are replacement-art destinations; data is reserved for future content. Empty directories have .gitkeep markers.
+
+No CardDatabase or EconomyManager singleton is added yet: they have no Phase 1 responsibility and belong to later phases.
+
+## Inputs
+
+Active: Escape pause/resume; F3 debug overlay.
+Reserved: WASD movement; Shift sprint; E interact; left/right mouse primary/secondary; Q/R rotate; wheel up/down inspection zoom. No movement or interaction code exists yet. Future controller bindings should use these actions in Input Map.
+
+## Validation
+
+Open tests/foundation_smoke.tscn and press F6, or run:
+Godot --headless --path <project-directory> res://tests/foundation_smoke.tscn
+
+The test exits with failure count and uses only user://foundation_test.json plus temporary/backup siblings. It removes its test files afterward. Never point it at a real save.

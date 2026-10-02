@@ -1,0 +1,11 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Local artifacts and secrets
+.env
+.env.*
+!.env.example
+exports/
+*.log
+

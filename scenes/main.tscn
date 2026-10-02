@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/systems/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/world/test_environment.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/foundation_hud.tscn" id="3"]
+[node name="Main" type="Node3D" process_mode=3]
+script = ExtResource("1")
+[node name="TestEnvironment" parent="." instance=ExtResource("2")]
+process_mode = 1
+[node name="FoundationCamera" type="Camera3D" parent="."]
+position = Vector3(0, 3.2, 7)
+rotation_degrees = Vector3(-15, 0, 0)
+current = true
+fov = 65.0
+[node name="FoundationHUD" parent="." instance=ExtResource("3")]
