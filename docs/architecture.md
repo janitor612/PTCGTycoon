@@ -10,15 +10,17 @@ Use typed GDScript, tabs, snake_case files/functions/variables, PascalCase node 
 - SaveManager owns the versioned JSON envelope, explicit save/load APIs, error signals, and backup rotation. It never auto-saves or auto-loads. Empty load results also represent errors; subscribers should use operation_failed to distinguish them.
 - The environment inherits pausable processing. Main and HUD remain active while paused.
 - user://save_v1.json is the default future save location, outside res://. Payload ownership and migration rules will be added when real persistent systems exist. Unknown versions are rejected without rewriting them. A .bak file is retained; automatic recovery and power-loss guarantees are not implemented.
-- Static camera and PlayerSpawn marker are placeholders for Phase 2.
+- Main composes a reusable first-person `CharacterBody3D` and places it from `PlayerSpawn`. Locomotion, mouse look, and camera-aligned collision detection are separate responsibilities.
+- The interaction ray exposes collider detection and target changes only. Interactable semantics, prompts, highlighting, and use actions remain Phase 3 work.
+- DebugManager accepts named snapshot providers, keeping the HUD and diagnostics autoload independent of the player scene.
 - assets/environment and assets/materials are replacement-art destinations; data is reserved for future content. Empty directories have .gitkeep markers.
 
 No CardDatabase or EconomyManager singleton is added yet: they have no Phase 1 responsibility and belong to later phases.
 
 ## Inputs
 
-Active: Escape pause/resume; F3 debug overlay.
-Reserved: WASD movement; Shift sprint; E interact; left/right mouse primary/secondary; Q/R rotate; wheel up/down inspection zoom. No movement or interaction code exists yet. Future controller bindings should use these actions in Input Map.
+Active: WASD movement; mouse look; Shift sprint; Escape pause/resume; F3 debug overlay.
+Reserved: E interact; left/right mouse primary/secondary; Q/R rotate; wheel up/down inspection zoom. No use-action or object-interaction code exists yet. Future controller bindings should use these actions in Input Map.
 
 ## Validation
 

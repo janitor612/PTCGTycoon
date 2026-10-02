@@ -1,6 +1,6 @@
 # Project instructions
 
-Read docs/development_roadmap.md and docs/architecture.md before making changes. This is a phased Godot 3D TCG shop tycoon project. Phase 1 is complete; Phase 2 is not authorized yet. Cloud environment setup is authorized, but must not advance gameplay development.
+Read docs/development_roadmap.md and docs/architecture.md before making changes. This is a phased Godot 3D TCG shop tycoon project. Phases 1 and 2 are complete; Phase 3 is not authorized yet. Cloud environment setup is authorized, but must not advance gameplay development.
 
 Implement only the phase explicitly requested by the user. Stop at each phase boundary and report implemented behavior, created files, modified files, controls, exact tests, limitations, and the next phase. Wait for explicit permission before starting the next phase.
 
