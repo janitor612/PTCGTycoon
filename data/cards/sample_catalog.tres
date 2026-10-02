@@ -1,0 +1,109 @@
+[gd_resource type="Resource" script_class="CardCatalog" load_steps=18 format=3]
+[ext_resource type="Script" path="res://scripts/cards/card_catalog.gd" id="catalog"]
+[ext_resource type="Script" path="res://scripts/cards/card_set_definition.gd" id="set_script"]
+[ext_resource type="Script" path="res://scripts/cards/rarity_definition.gd" id="rarity_script"]
+[ext_resource type="Script" path="res://scripts/cards/variant_definition.gd" id="variant_script"]
+[ext_resource type="Script" path="res://scripts/cards/card_definition.gd" id="card_script"]
+[ext_resource type="Resource" path="res://data/card_sets/meadow_demo.tres" id="set"]
+[sub_resource type="Resource" id="common"]
+script = ExtResource("rarity_script")
+rarity_id = &"common"
+display_name = "common"
+sort_order = 0
+
+[sub_resource type="Resource" id="uncommon"]
+script = ExtResource("rarity_script")
+rarity_id = &"uncommon"
+display_name = "uncommon"
+sort_order = 1
+
+[sub_resource type="Resource" id="rare"]
+script = ExtResource("rarity_script")
+rarity_id = &"rare"
+display_name = "rare"
+sort_order = 2
+
+[sub_resource type="Resource" id="normal"]
+script = ExtResource("variant_script")
+variant_id = &"normal"
+display_name = "normal"
+sort_order = 0
+foil_style_id = &"none"
+
+[sub_resource type="Resource" id="reverse_holo"]
+script = ExtResource("variant_script")
+variant_id = &"reverse_holo"
+display_name = "reverse_holo"
+sort_order = 1
+foil_style_id = &"reverse_holo"
+
+[sub_resource type="Resource" id="holo"]
+script = ExtResource("variant_script")
+variant_id = &"holo"
+display_name = "holo"
+sort_order = 2
+foil_style_id = &"holo"
+
+[sub_resource type="Resource" id="illustration"]
+script = ExtResource("variant_script")
+variant_id = &"illustration"
+display_name = "illustration"
+sort_order = 3
+foil_style_id = &"illustration"
+
+[sub_resource type="Resource" id="sproutling"]
+script = ExtResource("card_script")
+card_id = &"meadow_sproutling"
+display_name = "Sproutling"
+creature_name = "Sproutling"
+set_id = &"meadow_demo"
+collector_number = "1"
+rarity_id = &"common"
+variant_ids = Array[StringName]([&"normal", &"reverse_holo"])
+element_id = &"grass"
+market_value_minor = 25
+
+[sub_resource type="Resource" id="emberkit"]
+script = ExtResource("card_script")
+card_id = &"meadow_emberkit"
+display_name = "Emberkit"
+creature_name = "Emberkit"
+set_id = &"meadow_demo"
+collector_number = "2"
+rarity_id = &"common"
+variant_ids = Array[StringName]([&"normal"])
+element_id = &"fire"
+market_value_minor = 30
+
+[sub_resource type="Resource" id="brookfin"]
+script = ExtResource("card_script")
+card_id = &"meadow_brookfin"
+display_name = "Brookfin"
+creature_name = "Brookfin"
+set_id = &"meadow_demo"
+collector_number = "3"
+rarity_id = &"uncommon"
+variant_ids = Array[StringName]([&"normal", &"reverse_holo"])
+element_id = &"water"
+market_value_minor = 80
+
+[sub_resource type="Resource" id="aurorawing"]
+script = ExtResource("card_script")
+card_id = &"meadow_aurorawing"
+display_name = "Aurorawing"
+creature_name = "Aurorawing"
+set_id = &"meadow_demo"
+collector_number = "4"
+rarity_id = &"rare"
+variant_ids = Array[StringName]([&"holo", &"illustration"])
+element_id = &"air"
+market_value_minor = 1250
+
+[resource]
+script = ExtResource("catalog")
+schema_version = 1
+sets = Array[ExtResource("set_script")]([ExtResource("set")])
+rarities = Array[ExtResource("rarity_script")]([SubResource("common"), SubResource("uncommon"), SubResource("rare")])
+variants = Array[ExtResource("variant_script")]([SubResource("normal"), SubResource("reverse_holo"), SubResource("holo"), SubResource("illustration")])
+cards = Array[ExtResource("card_script")]([SubResource("sproutling"), SubResource("emberkit"), SubResource("brookfin"), SubResource("aurorawing")])
+

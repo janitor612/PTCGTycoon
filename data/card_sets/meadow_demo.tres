@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardSetDefinition" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/cards/card_set_definition.gd" id="1"]
+[resource]
+script = ExtResource("1")
+set_id = &"meadow_demo"
+display_name = "Meadow Beginnings — Demo"
+series_name = "Fictional Test TCG"
+expected_card_count = 4

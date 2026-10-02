@@ -15,7 +15,7 @@ Use typed GDScript, tabs, snake_case files/functions/variables, PascalCase node 
 - DebugManager accepts named snapshot providers, keeping the HUD and diagnostics autoload independent of the player scene.
 - assets/environment and assets/materials are replacement-art destinations; data is reserved for future content. Empty directories have .gitkeep markers.
 
-No CardDatabase or EconomyManager singleton is added yet: they have no Phase 1 responsibility and belong to later phases.
+CardDatabase was added in Phase 5. EconomyManager remains future work.
 
 ## Inputs
 
@@ -36,3 +36,8 @@ GameManager handles Escape in its always-active _input callback so GUI consumpti
 ## Phase 4 physical objects
 CarryableComponent links a RigidBody3D, one convex collision shape, one mesh, and an InteractableComponent. The player's composed ObjectHandling node owns the carry state, shape sweeps, placement query, and input. Interaction targeting is suspended while carrying. Bodies remain in their world scene with physics frozen during carrying; release restores physics and collision exceptions. Placement uses an upright yaw rotation, configurable bottom offset, support-normal check, and shape-overlap check including the player. The preview is visual only. No inventory or product database is introduced.
 
+
+## Phase 5 catalog
+CardDefinition, CardSetDefinition, RarityDefinition, VariantDefinition and CardCatalog are typed Resources. CardDatabase provides both card and set database APIs. CatalogIndex validates a candidate before replacement and indexes stable IDs plus set, rarity and variant membership. Rejected replacements retain the last valid catalog and emit diagnostics. Unknown schema versions are rejected; no migration is implemented.
+
+Catalog Resources are shared and must be treated as read-only after loading. Query arrays are copies, but their Resource entries are shared. Ownership and quantity belong to future collection/save records referencing card IDs, rather than immutable catalog definitions. Market values use integer minor units. Expected set size is metadata; partial catalogs are allowed. Variant availability is per card; foil_style_id is only metadata for future rendering. Optional textures can remain unset. The four-card fictional demo catalog is the only shipped card content. Search scans only when called, while ID and membership queries use indexes. F3 diagnostics show loaded card and set counts.

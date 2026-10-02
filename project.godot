@@ -35,6 +35,7 @@ renderer/rendering_method.mobile="gl_compatibility"
 GameManager="*res://autoload/game_manager.gd"
 DebugManager="*res://autoload/debug_manager.gd"
 SaveManager="*res://autoload/save_manager.gd"
+CardDatabase="*res://autoload/card_database.gd"
 
 [input]
 
@@ -107,4 +108,5 @@ inspect_zoom_out={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"button_index":5)]
 }
+
 

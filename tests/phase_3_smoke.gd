@@ -20,6 +20,8 @@ func _ready() -> void:
 	use_event.physical_keycode = KEY_E
 	use_event.pressed = true
 	Input.parse_input_event(use_event)
+	# Dispatch buffered input deterministically in headless test runs.
+	Input.flush_buffered_events()
 	await _frames(3)
 	_check(prop.active, "Input invokes object behavior")
 	_check(last_prompt.contains("Turn off"), "Prompt updates after use")
@@ -51,5 +53,6 @@ func _check(condition: bool, description: String) -> void:
 	if not condition:
 		failures += 1
 		push_error(description)
+
 
 
